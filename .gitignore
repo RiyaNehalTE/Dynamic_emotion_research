@@ -1,0 +1,30 @@
+# Data files (too large)
+data/raw/
+data/splits/
+data/*.parquet
+
+# Model checkpoints (too large)
+outputs/checkpoints/
+outputs/checkpoints_init/
+outputs/checkpoints_memory/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.cache/
+
+# Environment
+emotion_env/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Large numpy files
+outputs/trajectories/*.npy
+outputs/trajectories_init/*.npy
+outputs/trajectories_memory/*.npy
+
+# Forecast (failed experiment)
+outputs/checkpoints_forecast/

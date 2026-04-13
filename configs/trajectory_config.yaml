@@ -1,0 +1,89 @@
+# ─────────────────────────────────────────────────────────
+# trajectory_config.yaml
+# Complete configuration for Subjective Emotional Drift
+# Pure Trajectory Model — No Classification
+# ─────────────────────────────────────────────────────────
+
+# ── Dataset ───────────────────────────────────────────────
+data:
+  train_path : "data/splits/train.csv"
+  val_path   : "data/splits/val.csv"
+  test_path  : "data/splits/test.csv"
+  min_turns  : 8
+  max_turns  : 10
+
+# ── Personas ──────────────────────────────────────────────
+personas:
+  num_personas       : 20
+  max_persona_length : 64    # tokens for persona description
+
+# ── Encoder (frozen RoBERTa) ──────────────────────────────
+encoder:
+  model_name    : "roberta-base"
+  hidden_size   : 768
+  max_utt_length: 64         # tokens per utterance
+  freeze        : true       # never update encoder weights
+
+# ── Mamba SSM ─────────────────────────────────────────────
+mamba:
+  d_model    : 256           # hidden state dimension
+  d_state    : 64            # SSM state dimension
+  d_conv     : 4             # convolution width
+  expand     : 2             # expansion factor
+  num_layers : 2             # number of Mamba layers
+  dropout    : 0.1
+
+# ── Trajectory Head ───────────────────────────────────────
+trajectory:
+  d_trajectory: 64           # output trajectory dimension
+                             # this is the emotion space
+
+# ── FiLM Persona Modulation ───────────────────────────────
+film:
+  persona_proj_dim: 256      # persona vector dimension
+
+# ── Loss Weights ──────────────────────────────────────────
+losses:
+  lambda_contrastive : 1.0   # persona separation loss
+  lambda_smoothness  : 0.1   # temporal consistency loss
+  lambda_drift       : 0.3   # volatile > stoic drift loss
+  lambda_memory      : 0.2
+  lambda_separation  : 0.2   # emotional memory loss
+  triplet_margin     : 0.5   # contrastive margin
+
+# ── Training ──────────────────────────────────────────────
+training:
+  epochs          : 3
+  batch_size          : 64       # conversations per batch
+  learning_rate       : 1.0e-4
+  weight_decay        : 0.01
+  warmup_ratio        : 0.1
+  max_grad_norm       : 1.0
+  fp16                : false
+  gradient_accumulation_steps: 1
+
+# ── Checkpointing ─────────────────────────────────────────
+checkpointing:
+  output_dir      : "outputs/checkpoints"
+  save_every_epoch: true
+  save_total_limit: 3        # keep last 3 checkpoints
+
+# ── Evaluation ────────────────────────────────────────────
+evaluation:
+  eval_every_epoch : true
+  trajectory_dir   : "outputs/trajectories"
+  plots_dir        : "outputs/plots"
+  # Target metrics
+  target_silhouette       : 0.30   # persona separation
+  target_variance_ratio   : 1.5    # volatile/stoic variance
+  target_persona_clf_acc  : 0.55   # trajectory→persona accuracy
+
+# ── Logging ───────────────────────────────────────────────
+logging:
+  logging_steps: 50
+  report_to    : "none"
+
+# ── DataLoader ────────────────────────────────────────────
+dataloader:
+  num_workers: 4
+  pin_memory : true
