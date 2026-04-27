@@ -411,7 +411,6 @@ makeup_98_9,makeup,9,8,8,1.0,"['enthusiastic', 'curious', 'enthusiastic', 'excit
 movies_35_9,movies,18,13,17,0.7647058823529411,"['surprised', 'surprised', 'amused', 'excited', 'surprised', 'surprised', 'amused', 'confused', 'surprised', 'curious', 'excited', 'enthusiastic', 'surprised', 'excited', 'excited', 'surprised', 'surprised', 'curious']"
 movies_54_8,movies,8,7,7,1.0,"['curious', 'enthusiastic', 'curious', 'excited', 'surprised', 'curious', 'amused', 'surprised']"
 movies_57_8,movies,8,7,7,1.0,"['excited', 'surprised', 'amused', 'surprised', 'excited', 'proud', 'excited', 'surprised']"
-movies_61_10,movies,20,15,19,0.7894736842105263,"['curious', 'enthusiastic', 'surprised', 'curious', 'excited', 'excited', 'enthusiastic', 'amused', 'excited', 'curious', 'proud', 'surprised', 'happy', 'excited', 'excited', 'amused', 'amused', 'excited', 'excited', 'curious']"
 movies_6_8,movies,16,15,15,1.0,"['excited', 'disappointed', 'happy', 'sad', 'enthusiastic', 'hopeful', 'excited', 'curious', 'enthusiastic', 'surprised', 'curious', 'amused', 'surprised', 'excited', 'amused', 'enthusiastic']"
 movies_72_8,movies,8,7,7,1.0,"['nostalgic', 'sad', 'nostalgic', 'sad', 'hopeful', 'curious', 'excited', 'curious']"
 movies_74_8,movies,16,14,15,0.9333333333333333,"['surprised', 'surprised', 'curious', 'amused', 'excited', 'curious', 'amused', 'enthusiastic', 'excited', 'happy', 'amused', 'enthusiastic', 'surprised', 'hopeful', 'happy', 'excited']"
